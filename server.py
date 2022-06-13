@@ -8,18 +8,21 @@ def html_page(page_name):
 
 def write_to_file(data):
     with open('database.txt', mode='a') as database:
+        name = data["name"]
         email = data["email"]
         subject = data["subject"]
         message = data["message"]
-        file = database.write(f"\n{email}, {subject}, {message}")
+        
+        file = database.write(f"\n{name}, {email}, {subject}, {message}")
 
 def write_to_csv(data):
     with open('database.csv', newline='', mode='a') as database2:
+        name = data["name"]
         email = data["email"]
         subject = data["subject"]
-        message = data["message"]
+        message = data["message"]     
         csv_writer = csv.writer(database2, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csv_writer.writerow([email,subject,message])
+        csv_writer.writerow([name,email,subject,message])
 
 @app.route('/')
 def home2():
